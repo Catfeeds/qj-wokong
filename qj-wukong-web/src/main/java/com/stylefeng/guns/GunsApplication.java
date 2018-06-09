@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author stylefeng111111111111 
  * @Date 2017/5/21 12:06
  * test666
- * tets
+ * tets666
  */
 @SpringBootApplication
 public class GunsApplication extends WebMvcConfigurerAdapter {
