@@ -15,6 +15,7 @@ import com.baomidou.mybatisplus.enums.IdType;
  * @author wuhuigui
  * @version
  * 雪茄你是个大傻逼
+ * 雪茄你是个大傻逼
  *
  */
 @TableName("wb_user_order_detail")
