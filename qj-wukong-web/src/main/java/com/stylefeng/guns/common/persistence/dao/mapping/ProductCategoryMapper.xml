@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.ProductCategoryMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.ProductCategory">
+		<id column="id" property="id" />
+		<result column="category_id" property="categoryId" />
+		<result column="parent_id" property="parentId" />
+		<result column="category_name" property="categoryName" />
+		<result column="status" property="status" />
+		<result column="sort" property="sort" />
+		<result column="created_by" property="createdBy" />
+		<result column="created_date" property="createdDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+		<result column="last_updated_date" property="lastUpdatedDate" />
+		<result column="data_status" property="dataStatus" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, category_id AS categoryId, parent_id AS parentId, category_name AS categoryName, status, sort, created_by AS createdBy, created_date AS createdDate, last_updated_by AS lastUpdatedBy, last_updated_date AS lastUpdatedDate, data_status AS dataStatus
+    </sql>
+
+</mapper>

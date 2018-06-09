@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="id" underline="true"/>
+                            <#input id="specId" name="规格id" underline="true"/>
+                            <#input id="specValue" name="规格值" underline="true"/>
+                            <#input id="createdBy" name="创建人"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="createdDate" name="创建时间" underline="true"/>
+                            <#input id="lastUpdatedBy" name="最后更新人ID" underline="true"/>
+                            <#input id="lastUpdateDate" name="最后更新时间" underline="true"/>
+                            <#input id="dataStatus" name="数据状态0:已删除,1正常" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="WkProductSpecValueInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="WkProductSpecValueInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/product/wkProductSpecValue/wkProductSpecValue_info.js"></script>
+@}

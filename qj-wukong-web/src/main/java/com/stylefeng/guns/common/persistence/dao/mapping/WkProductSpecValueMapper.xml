@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.WkProductSpecValueMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.WkProductSpecValue">
+		<id column="id" property="id" />
+		<result column="spec_id" property="specId" />
+		<result column="spec_value" property="specValue" />
+		<result column="created_by" property="createdBy" />
+		<result column="created_date" property="createdDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+		<result column="last_update_date" property="lastUpdateDate" />
+		<result column="data_status" property="dataStatus" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, spec_id AS specId, spec_value AS specValue, created_by AS createdBy, created_date AS createdDate, last_updated_by AS lastUpdatedBy, last_update_date AS lastUpdateDate, data_status AS dataStatus
+    </sql>
+
+</mapper>

@@ -1,0 +1,58 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<input type="hidden" id="id" value="${item.id}">
+
+			<div class="row">
+				<div class="col-sm-6 b-r">
+					<#input id="id" name="id" value="${item.id}" underline="true"
+						disabled="disabled" />
+					<#input id="orderNo" name="订单号" value="${item.orderNo}"
+						underline="true" disabled="disabled" />
+					<#input id="weChatId" name="微信id" value="${item.weChatId}"
+						underline="true" disabled="disabled" />
+					<#input id="productId" name="商品id" value="${item.productId}"
+						underline="true" />
+					<#input id="orderMoney" name="订单价格" value="${item.orderMoney}" />
+				</div>
+
+				<div class="col-sm-6">
+					<#input id="orderNum" name="订单数量" value="${item.orderNum}"
+						underline="true" />
+					<#input id="orderStatus" name="订单状态" value="${item.orderStatus}"
+						underline="true" />
+					<div class="form-group">
+						<label class="col-sm-3 control-label">是否可用</label>
+						<div class="col-sm-9">
+							<select class="form-control" id="isEnable" name="isEnable">
+								<option value="1">是</option>
+								<option value="2">否</option>
+							</select>
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+					<#input id="createdDate" name="创建时间" value="${item.createdDate}"
+						underline="true" type="date" disabled="disabled" />
+					<#input id="lastUpdatedDate" name="修改时间"
+						value="${item.lastUpdatedDate}" type="date"
+						onclick="laydate({istime: false, format: 'YYYY-MM-DD'})" />
+				</div>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="WbUserOrderDetailInfoDlg.editSubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="WbUserOrderDetailInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/modular/order/wbUserOrderDetail/wbUserOrderDetail_info.js"></script>
+@}

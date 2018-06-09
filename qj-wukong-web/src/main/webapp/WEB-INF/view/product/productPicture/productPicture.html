@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>产品图片关联信息配置管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="ProductPicture.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="ProductPictureTableToolbar" role="group">
+                            @if(shiro.hasPermission("/productPicture/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="ProductPicture.openAddProductPicture()"/>
+                            @}
+                            @if(shiro.hasPermission("/productPicture/update")){
+                                <#button name="修改" icon="fa-plus" clickFun="ProductPicture.openProductPictureDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/productPicture/delete")){
+                                <#button name="删除" icon="fa-plus" clickFun="ProductPicture.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="ProductPictureTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/product/productPicture/productPicture.js"></script>
+@}

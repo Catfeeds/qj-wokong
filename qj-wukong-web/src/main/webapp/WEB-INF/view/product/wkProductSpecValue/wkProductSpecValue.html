@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>产品规格值配置管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="WkProductSpecValue.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="WkProductSpecValueTableToolbar" role="group">
+                            @if(shiro.hasPermission("/wkProductSpecValue/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="WkProductSpecValue.openAddWkProductSpecValue()"/>
+                            @}
+                            @if(shiro.hasPermission("/wkProductSpecValue/update")){
+                                <#button name="修改" icon="fa-plus" clickFun="WkProductSpecValue.openWkProductSpecValueDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/wkProductSpecValue/delete")){
+                                <#button name="删除" icon="fa-plus" clickFun="WkProductSpecValue.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="WkProductSpecValueTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/product/wkProductSpecValue/wkProductSpecValue.js"></script>
+@}

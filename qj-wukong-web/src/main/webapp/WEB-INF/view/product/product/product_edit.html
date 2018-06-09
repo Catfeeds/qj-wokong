@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="productId" name="主键id" value="${item.productId}" underline="true"/>
+                            <#input id="productName" name="商品名称" value="${item.productName}" underline="true"/>
+                            <#input id="description" name="商品描述" value="${item.description}" underline="true"/>
+                            <#input id="categoryId" name="商品类别id" value="${item.categoryId}" underline="true"/>
+                            <#input id="paramterAttr" name="商品属性" value="${item.paramterAttr}" underline="true"/>
+                            <#input id="paramterJson" name="商品参数" value="${item.paramterJson}" underline="true"/>
+                            <#input id="status" name="上架状态" value="${item.status}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="isPush" name="是否首推0:否,1:是" value="${item.isPush}" underline="true"/>
+                            <#input id="orderBy" name="排序" value="${item.orderBy}" underline="true"/>
+                            <#input id="createdBy" name="创建人id" value="${item.createdBy}" underline="true"/>
+                            <#input id="createdDate" name="创建时间" value="${item.createdDate}" underline="true"/>
+                            <#input id="lastUpdatedBy" name="最后更新人员id" value="${item.lastUpdatedBy}" underline="true"/>
+                            <#input id="lastUpdateDate" name="修改时间" value="${item.lastUpdateDate}" underline="true"/>
+                            <#input id="dataStatus" name="数据状态0:已删除,1正常" value="${item.dataStatus}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ProductInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ProductInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/product/product/product_info.js"></script>
+@}
