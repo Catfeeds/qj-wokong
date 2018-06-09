@@ -16,7 +16,7 @@ import com.baomidou.mybatisplus.enums.IdType;
  * @version
  * 雪茄你是个大傻逼
  * 雪茄你是个大傻逼
- *
+ * wugui
  */
 @TableName("wb_user_order_detail")
 public class ShopCartVo extends Model<ShopCartVo> {
