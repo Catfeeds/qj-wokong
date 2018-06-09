@@ -14,7 +14,8 @@ import com.baomidou.mybatisplus.enums.IdType;
  * 订单表
  * @author wuhuigui
  * @version
- *wugui
+ *
+ *wuhui1
  */
 @TableName("wb_user_order_detail")
 public class ShopCartVo extends Model<ShopCartVo> {
