@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.common.persistence.dao.UserAddressMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.UserAddress">
+		<id column="id" property="id" />
+		<result column="we_chat_id" property="weChatId" />
+		<result column="province_id" property="provinceId" />
+		<result column="city_id" property="cityId" />
+		<result column="area_id" property="areaId" />
+		<result column="address" property="address" />
+		<result column="user_name" property="userName" />
+		<result column="consignee" property="consignee" />
+		<result column="phone_no" property="phoneNo" />
+		<result column="code" property="code" />
+		<result column="is_default" property="isDefault" />
+		<result column="created_by" property="createdBy" />
+		<result column="created_date" property="createdDate" />
+		<result column="last_updated_by" property="lastUpdatedBy" />
+		<result column="last_update_date" property="lastUpdateDate" />
+		<result column="data_status" property="dataStatus" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, we_chat_id AS weChatId, province_id AS provinceId, city_id AS cityId, area_id AS areaId, address, user_name AS userName, consignee, phone_no AS phoneNo, code, is_default AS isDefault, created_by AS createdBy, created_date AS createdDate, last_updated_by AS lastUpdatedBy, last_update_date AS lastUpdateDate, data_status AS dataStatus
+    </sql>
+
+</mapper>

@@ -3,6 +3,7 @@ package com.stylefeng.guns.common.persistence.model;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.enums.IdType;
+import java.math.BigDecimal;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
@@ -12,53 +13,46 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 用户隐私文件
+ * 产品详情
  * </p>
  *
  * @author zhoushunjia
  * @since 2018-06-09
  */
-@TableName("wk_upload_file")
-public class UploadFile extends Model<UploadFile> {
+@TableName("wk_product_info")
+public class ProductInfo extends Model<ProductInfo> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * id
+     * 主键id
      */
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
     /**
-     * 文件uuid
+     * 商品id
      */
-	@TableField("file_uid")
-	private String fileUid;
+	@TableField("product_id")
+	private String productId;
     /**
-     * 用户id
+     * 商品库存
      */
-	@TableField("user_id")
-	private Integer userId;
+	@TableField("stock_num")
+	private Integer stockNum;
     /**
-     * 文件类型1-身份证正面
+     * 商品价格
      */
-	@TableField("file_type")
-	private String fileType;
+	private BigDecimal price;
     /**
-     * 文件路径
+     * 商品颜色
      */
-	@TableField("file_path")
-	private String filePath;
+	private String colour;
     /**
-     * 上传时间
+     * 商品尺寸
      */
-	@TableField("upload_time")
-	private Date uploadTime;
+	private String dimens;
     /**
-     * 所属项目值
-     */
-	private String project;
-    /**
-     * 创建人
+     * 创建人id
      */
 	@TableField("created_by")
 	private Integer createdBy;
@@ -73,7 +67,7 @@ public class UploadFile extends Model<UploadFile> {
 	@TableField("last_updated_by")
 	private Integer lastUpdatedBy;
     /**
-     * 最后更新时间
+     * 修改时间
      */
 	@TableField("last_update_date")
 	private Date lastUpdateDate;
@@ -92,52 +86,44 @@ public class UploadFile extends Model<UploadFile> {
 		this.id = id;
 	}
 
-	public String getFileUid() {
-		return fileUid;
+	public String getProductId() {
+		return productId;
 	}
 
-	public void setFileUid(String fileUid) {
-		this.fileUid = fileUid;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public Integer getStockNum() {
+		return stockNum;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setStockNum(Integer stockNum) {
+		this.stockNum = stockNum;
 	}
 
-	public String getFileType() {
-		return fileType;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
-	public String getFilePath() {
-		return filePath;
+	public String getColour() {
+		return colour;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setColour(String colour) {
+		this.colour = colour;
 	}
 
-	public Date getUploadTime() {
-		return uploadTime;
+	public String getDimens() {
+		return dimens;
 	}
 
-	public void setUploadTime(Date uploadTime) {
-		this.uploadTime = uploadTime;
-	}
-
-	public String getProject() {
-		return project;
-	}
-
-	public void setProject(String project) {
-		this.project = project;
+	public void setDimens(String dimens) {
+		this.dimens = dimens;
 	}
 
 	public Integer getCreatedBy() {
@@ -187,14 +173,13 @@ public class UploadFile extends Model<UploadFile> {
 
 	@Override
 	public String toString() {
-		return "UploadFile{" +
+		return "ProductInfo{" +
 			"id=" + id +
-			", fileUid=" + fileUid +
-			", userId=" + userId +
-			", fileType=" + fileType +
-			", filePath=" + filePath +
-			", uploadTime=" + uploadTime +
-			", project=" + project +
+			", productId=" + productId +
+			", stockNum=" + stockNum +
+			", price=" + price +
+			", colour=" + colour +
+			", dimens=" + dimens +
 			", createdBy=" + createdBy +
 			", createdDate=" + createdDate +
 			", lastUpdatedBy=" + lastUpdatedBy +

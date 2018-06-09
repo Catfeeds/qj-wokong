@@ -12,14 +12,14 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 用户隐私文件
+ * 用户表
  * </p>
  *
  * @author zhoushunjia
  * @since 2018-06-09
  */
-@TableName("wk_upload_file")
-public class UploadFile extends Model<UploadFile> {
+@TableName("wk_user_info")
+public class UserInfo extends Model<UserInfo> {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,36 +29,22 @@ public class UploadFile extends Model<UploadFile> {
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
     /**
-     * 文件uuid
+     * 微信id
      */
-	@TableField("file_uid")
-	private String fileUid;
+	@TableField("we_chat_id")
+	private Integer weChatId;
     /**
-     * 用户id
+     * 微信号
      */
-	@TableField("user_id")
-	private Integer userId;
+	@TableField("we_chat_no")
+	private String weChatNo;
     /**
-     * 文件类型1-身份证正面
+     * 手机号
      */
-	@TableField("file_type")
-	private String fileType;
+	@TableField("phone_no")
+	private String phoneNo;
     /**
-     * 文件路径
-     */
-	@TableField("file_path")
-	private String filePath;
-    /**
-     * 上传时间
-     */
-	@TableField("upload_time")
-	private Date uploadTime;
-    /**
-     * 所属项目值
-     */
-	private String project;
-    /**
-     * 创建人
+     * 创建人ID
      */
 	@TableField("created_by")
 	private Integer createdBy;
@@ -73,10 +59,10 @@ public class UploadFile extends Model<UploadFile> {
 	@TableField("last_updated_by")
 	private Integer lastUpdatedBy;
     /**
-     * 最后更新时间
+     * 修改时间
      */
-	@TableField("last_update_date")
-	private Date lastUpdateDate;
+	@TableField("last_updated_date")
+	private Date lastUpdatedDate;
     /**
      * 数据状态0:已删除,1正常
      */
@@ -92,52 +78,28 @@ public class UploadFile extends Model<UploadFile> {
 		this.id = id;
 	}
 
-	public String getFileUid() {
-		return fileUid;
+	public Integer getWeChatId() {
+		return weChatId;
 	}
 
-	public void setFileUid(String fileUid) {
-		this.fileUid = fileUid;
+	public void setWeChatId(Integer weChatId) {
+		this.weChatId = weChatId;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public String getWeChatNo() {
+		return weChatNo;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setWeChatNo(String weChatNo) {
+		this.weChatNo = weChatNo;
 	}
 
-	public String getFileType() {
-		return fileType;
+	public String getPhoneNo() {
+		return phoneNo;
 	}
 
-	public void setFileType(String fileType) {
-		this.fileType = fileType;
-	}
-
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
-	public Date getUploadTime() {
-		return uploadTime;
-	}
-
-	public void setUploadTime(Date uploadTime) {
-		this.uploadTime = uploadTime;
-	}
-
-	public String getProject() {
-		return project;
-	}
-
-	public void setProject(String project) {
-		this.project = project;
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 
 	public Integer getCreatedBy() {
@@ -164,12 +126,12 @@ public class UploadFile extends Model<UploadFile> {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
 
-	public Date getLastUpdateDate() {
-		return lastUpdateDate;
+	public Date getLastUpdatedDate() {
+		return lastUpdatedDate;
 	}
 
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
+	public void setLastUpdatedDate(Date lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
 	}
 
 	public Integer getDataStatus() {
@@ -187,18 +149,15 @@ public class UploadFile extends Model<UploadFile> {
 
 	@Override
 	public String toString() {
-		return "UploadFile{" +
+		return "UserInfo{" +
 			"id=" + id +
-			", fileUid=" + fileUid +
-			", userId=" + userId +
-			", fileType=" + fileType +
-			", filePath=" + filePath +
-			", uploadTime=" + uploadTime +
-			", project=" + project +
+			", weChatId=" + weChatId +
+			", weChatNo=" + weChatNo +
+			", phoneNo=" + phoneNo +
 			", createdBy=" + createdBy +
 			", createdDate=" + createdDate +
 			", lastUpdatedBy=" + lastUpdatedBy +
-			", lastUpdateDate=" + lastUpdateDate +
+			", lastUpdatedDate=" + lastUpdatedDate +
 			", dataStatus=" + dataStatus +
 			"}";
 	}

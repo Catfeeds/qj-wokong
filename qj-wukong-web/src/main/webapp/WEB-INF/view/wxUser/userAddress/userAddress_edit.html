@@ -1,0 +1,43 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="id" value="${item.id}" underline="true"/>
+                            <#input id="weChatId" name="微信id" value="${item.weChatId}" underline="true"/>
+                            <#input id="provinceId" name="省份id" value="${item.provinceId}" underline="true"/>
+                            <#input id="cityId" name="城市id" value="${item.cityId}" underline="true"/>
+                            <#input id="areaId" name="区域id" value="${item.areaId}" underline="true"/>
+                            <#input id="address" name="收货地址" value="${item.address}" underline="true"/>
+                            <#input id="userName" name="收货人名称" value="${item.userName}" underline="true"/>
+                            <#input id="consignee" name="收货人" value="${item.consignee}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="phoneNo" name="手机号" value="${item.phoneNo}" underline="true"/>
+                            <#input id="code" name="邮编" value="${item.code}" underline="true"/>
+                            <#input id="isDefault" name="是否是默认地址 0:默认 1:非默认" value="${item.isDefault}" underline="true"/>
+                            <#input id="createdBy" name="创建人ID" value="${item.createdBy}" underline="true"/>
+                            <#input id="createdDate" name="创建时间" value="${item.createdDate}" underline="true"/>
+                            <#input id="lastUpdatedBy" name="最后更新人ID" value="${item.lastUpdatedBy}" underline="true"/>
+                            <#input id="lastUpdateDate" name="最后更新修改时间" value="${item.lastUpdateDate}" underline="true"/>
+                            <#input id="dataStatus" name="数据状态0:已删除,1正常" value="${item.dataStatus}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserAddressInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserAddressInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/wxUser/userAddress/userAddress_info.js"></script>
+@}
