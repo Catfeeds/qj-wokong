@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.enums.IdType;
 /**
  * 订单表
  * @author wuhuigui
- * @version
+ * @version 
  *
  */
 @TableName("wb_user_order_detail")
