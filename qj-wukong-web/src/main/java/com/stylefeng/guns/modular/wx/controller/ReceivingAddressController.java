@@ -32,7 +32,7 @@ public class ReceivingAddressController extends BaseController {
 	@ResponseBody
 	public Object getAddressList(String wechatId) {
 		try {
-			return new SuccessTip(SUCCESS_CODE, "添加收货地址成功", addressService.getAddressList(wechatId));
+			return new SuccessTip(SUCCESS_CODE, "查询收货地址成功", addressService.getAddressList(wechatId));
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("系统异常", e);

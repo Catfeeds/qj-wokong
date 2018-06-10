@@ -5,24 +5,27 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.UserOrder">
 		<id column="id" property="id" />
-		<result column="order_no" property="orderNo" />
-		<result column="we_chat_id" property="weChatId" />
-		<result column="product_id" property="productId" />
-		<result column="order_money" property="orderMoney" />
-		<result column="order_num" property="orderNum" />
-		<result column="order_status" property="orderStatus" />
-		<result column="is_enable" property="isEnable" />
-		<result column="created_by" property="createdBy" />
-		<result column="created_date" property="createdDate" />
-		<result column="last_updated_by" property="lastUpdatedBy" />
-		<result column="last_updated_date" property="lastUpdatedDate" />
-		<result column="data_status" property="dataStatus" />
-		<result column="address_id" property="addressId" />
+		<result column="orderNo" property="orderNo" />
+		<result column="weChatId" property="weChatId" />
+		<result column="productId" property="productId" />
+		<result column="orderMoney" property="orderMoney" />
+		<result column="orderNum" property="orderNum" />
+		<result column="orderStatus" property="orderStatus" />
+		<result column="isEnable" property="isEnable" />
+		<result column="createdBy" property="createdBy" />
+		<result column="createdDate" property="createdDate" />
+		<result column="lastUpdatedBy" property="lastUpdatedBy" />
+		<result column="lastUpdatedDate" property="lastUpdatedDate" />
+		<result column="dataStatus" property="dataStatus" />
+		<result column="addressId" property="addressId" />
+		<collection property="productPictures" column="productId" select="com.stylefeng.guns.common.persistence.dao.ProductPictureMapper.selectById"/>
 	</resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, order_no AS orderNo, we_chat_id AS weChatId, product_id AS productId, order_money AS orderMoney, order_num AS orderNum, order_status AS orderStatus, is_enable AS isEnable, created_by AS createdBy, created_date AS createdDate, last_updated_by AS lastUpdatedBy, last_updated_date AS lastUpdatedDate, data_status AS dataStatus, address_id AS addressId
     </sql>
-
+	<select id="selectByWechatId" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from wk_user_order where we_chat_id = #{wechatId} and order_status=#{orderStatus}
+	</select>
 </mapper>

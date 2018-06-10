@@ -5,6 +5,8 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
@@ -22,79 +24,92 @@ import java.io.Serializable;
 @TableName("wk_user_order")
 public class UserOrder extends Model<UserOrder> {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * id
-     */
-	@TableId(value="id", type= IdType.AUTO)
+	/**
+	 * id
+	 */
+	@TableId(value = "id", type = IdType.AUTO)
 	private Integer id;
-    /**
-     * 订单号
-     */
+	/**
+	 * 订单号
+	 */
 	@TableField("order_no")
 	private Integer orderNo;
-    /**
-     * 微信id
-     */
+	/**
+	 * 微信id
+	 */
 	@TableField("we_chat_id")
 	private Integer weChatId;
-    /**
-     * 商品id
-     */
+	/**
+	 * 商品id
+	 */
 	@TableField("product_id")
 	private String productId;
-    /**
-     * 订单价格
-     */
+	/**
+	 * 订单价格
+	 */
 	@TableField("order_money")
 	private BigDecimal orderMoney;
-    /**
-     * 订单数量
-     */
+	/**
+	 * 订单数量
+	 */
 	@TableField("order_num")
 	private Integer orderNum;
-    /**
-     * 订单状态
-     */
+	/**
+	 * 订单状态
+	 */
 	@TableField("order_status")
 	private Integer orderStatus;
-    /**
-     * 是否可用
-     */
+	/**
+	 * 是否可用
+	 */
 	@TableField("is_enable")
 	private Integer isEnable;
-    /**
-     * 创建人ID
-     */
+	/**
+	 * 创建人ID
+	 */
 	@TableField("created_by")
 	private Integer createdBy;
-    /**
-     * 创建时间
-     */
+	/**
+	 * 创建时间
+	 */
 	@TableField("created_date")
 	private Date createdDate;
-    /**
-     * 最后更新人ID
-     */
+	/**
+	 * 最后更新人ID
+	 */
 	@TableField("last_updated_by")
 	private Integer lastUpdatedBy;
-    /**
-     * 修改时间
-     */
+	/**
+	 * 修改时间
+	 */
 	@TableField("last_updated_date")
 	private Date lastUpdatedDate;
-    /**
-     * 数据状态0:已删除,1正常
-     */
+	/**
+	 * 数据状态0:已删除,1正常
+	 */
 	@TableField("data_status")
 	private Integer dataStatus;
-    /**
-     * 地址ID
-     */
+	/**
+	 * 地址ID
+	 */
 	@TableField("address_id")
 	private Integer addressId;
+	
+	private List<ProductPicture> productPictures;
 
+	public List<ProductPicture> getProductPictures() {
+		return productPictures;
+	}
+
+	public void setProductPictures(List<ProductPicture> productPictures) {
+		this.productPictures = productPictures;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public Integer getId() {
 		return id;
@@ -215,21 +230,10 @@ public class UserOrder extends Model<UserOrder> {
 
 	@Override
 	public String toString() {
-		return "UserOrder{" +
-			"id=" + id +
-			", orderNo=" + orderNo +
-			", weChatId=" + weChatId +
-			", productId=" + productId +
-			", orderMoney=" + orderMoney +
-			", orderNum=" + orderNum +
-			", orderStatus=" + orderStatus +
-			", isEnable=" + isEnable +
-			", createdBy=" + createdBy +
-			", createdDate=" + createdDate +
-			", lastUpdatedBy=" + lastUpdatedBy +
-			", lastUpdatedDate=" + lastUpdatedDate +
-			", dataStatus=" + dataStatus +
-			", addressId=" + addressId +
-			"}";
+		return "UserOrder{" + "id=" + id + ", orderNo=" + orderNo + ", weChatId=" + weChatId + ", productId="
+				+ productId + ", orderMoney=" + orderMoney + ", orderNum=" + orderNum + ", orderStatus=" + orderStatus
+				+ ", isEnable=" + isEnable + ", createdBy=" + createdBy + ", createdDate=" + createdDate
+				+ ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", dataStatus="
+				+ dataStatus + ", addressId=" + addressId + "}";
 	}
 }

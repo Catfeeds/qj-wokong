@@ -5,18 +5,20 @@
 	<!-- 通用查询映射结果 -->
 	<resultMap id="BaseResultMap" type="com.stylefeng.guns.common.persistence.model.ProductPicture">
 		<id column="id" property="id" />
-		<result column="product_id" property="productId" />
-		<result column="file_uid" property="fileUid" />
-		<result column="created_by" property="createdBy" />
-		<result column="created_date" property="createdDate" />
-		<result column="last_updated_by" property="lastUpdatedBy" />
-		<result column="last_updated_date" property="lastUpdatedDate" />
-		<result column="data_status" property="dataStatus" />
+		<result column="productId" property="productId" />
+		<result column="fileUid" property="fileUid" />
+		<result column="createdBy" property="createdBy" />
+		<result column="createdDate" property="createdDate" />
+		<result column="lastUpdatedBy" property="lastUpdatedBy" />
+		<result column="lastUpdatedDate" property="lastUpdatedDate" />
+		<result column="dataStatus" property="dataStatus" />
 	</resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, product_id AS productId, file_uid AS fileUid, created_by AS createdBy, created_date AS createdDate, last_updated_by AS lastUpdatedBy, last_updated_date AS lastUpdatedDate, data_status AS dataStatus
     </sql>
-
+	<select id="selectById" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from wk_product_picture where product_id = #{id}
+	</select>
 </mapper>
