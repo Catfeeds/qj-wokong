@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.wx.dao.ReceivingAddressDao">
+	<resultMap type="com.stylefeng.guns.modular.wx.model.ReceivingAddress" id="addressMap">
+		<id property="id" column="id"/>
+		<result property="wechatId" column="we_chat_id"/>
+		<result property="provinceId" column="province_id"/>
+		<result property="cityId" column="city_id"/>
+		<result property="areaId" column="area_id"/>
+		<result property="address" column="address"/>
+		<result property="username" column="user_name"/>
+		<result property="phoneNo" column="phone_no" />
+		<result property="createdDate" column="created_date"/>
+		<result property="lastUpdateDate" column="last_updated_date"/>
+		<result property="consignee" column="consignee"/>
+		<result property="code" column="code"/>
+		<result property="isDefault" column="is_default"/>
+		
+	</resultMap>
+	<sql id="columns">
+		id,we_chat_id,province_id,city_id,area_id,address,user_name,consignee,phone_no,code,is_default,DATE_FORMAT(created_date,'%Y-%m-%d %h:%i:%s') created_date,DATE_FORMAT(last_updated_date,'%Y-%m-%d %h:%i:%s') last_updated_date
+	</sql>
+	<select id="getAddressList" resultMap="addressMap">
+		select <include refid="columns"/> from wk_user_address where we_chat_id = #{wechatId}
+	</select>
+	
+	<insert id="addAddress" parameterType="com.stylefeng.guns.modular.wx.model.ReceivingAddress">
+		insert into wk_user_address(
+			we_chat_id,
+			created_date,
+			last_updated_date
+			<if test="address.provinceId != null and address.provinceId != ''">
+				,province_id
+			</if>	
+			<if test="address.cityId != null and address.cityId != ''">
+				,city_id
+			</if>
+			<if test="address.areaId != null and address.areaId != ''">
+				,area_id
+			</if>
+			<if test="address.address != null and address.address != ''">
+				,address
+			</if>
+			<if test="address.username != null and address.username != ''">
+				,user_name
+			</if>
+			<if test="address.phoneNo != null and address.phoneNo != ''">
+				,phone_no
+			</if>
+			<if test="address.consignee != null and address.consignee != ''">
+				,consignee
+			</if>
+			<if test="address.code != null and address.code != ''">
+				,code
+			</if>
+			<if test="address.isDefault != null and address.isDefault != ''">
+				,is_default
+			</if>
+				
+		)
+		values(
+			#{address.wechatId},
+			CURRENT_TIMESTAMP,
+			CURRENT_TIMESTAMP
+			<if test="address.provinceId != null and address.provinceId != ''">
+				,#{address.provinceId}
+			</if>	
+			<if test="address.cityId != null and address.cityId != ''">
+				,#{address.cityId}
+			</if>
+			<if test="address.areaId != null and address.areaId != ''">
+				,#{address.areaId}
+			</if>
+			<if test="address.address != null and address.address != ''">
+				,#{address.address}
+			</if>
+			<if test="address.username != null and address.username != ''">
+				,#{address.username}
+			</if>
+			<if test="address.phoneNo != null and address.phoneNo != ''">
+				,#{address.phoneNo}
+			</if>
+			<if test="address.consignee != null and address.consignee != ''">
+				,#{address.consignee}
+			</if>
+			<if test="address.code != null and address.code != ''">
+				,#{address.code}
+			</if>
+			<if test="address.isDefault != null and address.isDefault != ''">
+				,#{address.isDefault}
+			</if>
+		)
+	</insert>
+	<update id="updateAddressById" parameterType="com.stylefeng.guns.modular.wx.model.ReceivingAddress">
+		update wk_user_address set
+		last_updated_date = CURRENT_TIMESTAMP
+		<if test="address.provinceId != null and address.provinceId != ''">
+			,province_id = #{address.provinceId}
+		</if>	
+		<if test="address.cityId != null and address.cityId != ''">
+			,city_id = #{address.cityId}
+		</if>
+		<if test="address.areaId != null and address.areaId != ''">
+			,area_id = #{address.areaId}
+		</if>
+		<if test="address.address != null and address.address != ''">
+			,address = #{address.address}
+		</if>
+		<if test="address.username != null and address.username != ''">
+			,user_name = #{address.username}
+		</if>
+		<if test="address.phoneNo != null and address.phoneNo != ''">
+			,phone_no = #{address.phoneNo}
+		</if>
+		<if test="address.consignee != null and address.consignee != ''">
+			,consignee = #{address.consignee}
+		</if>
+		<if test="address.code != null and address.code != ''">
+			,code = #{address.code}
+		</if>
+		<if test="address.isDefault != null and address.isDefault != ''">
+			,is_default = #{address.isDefault}
+		</if>
+		where id = #{address.id}
+	</update>
+	
+	<update id="updateIsDefaultByWechatId">
+		update wk_user_address set
+		last_updated_date = CURRENT_TIMESTAMP,
+		is_default = #{isDefault}
+		where we_chat_id = #{wechatId}
+	</update>
+	
+	<select id="selectById" resultMap="addressMap">
+		select <include refid="columns"/> from wk_user_address where id = #{id}
+	</select>
+	
+	<delete id="deleteById">
+		delete from wk_user_address where id = #{id}
+	</delete>
+	
+</mapper>
