@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
  *
  * @author zhoushunjia
  * @since 2018-06-08
- */
+ */ 
 @Service
 public class WkProductSpecValueServiceImpl extends ServiceImpl<WkProductSpecValueMapper, WkProductSpecValue> implements IWkProductSpecValueService {
-	
+	   
 }
+ 

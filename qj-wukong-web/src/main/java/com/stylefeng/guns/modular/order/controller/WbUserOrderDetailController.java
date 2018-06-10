@@ -26,85 +26,87 @@ import com.stylefeng.guns.modular.order.service.IWbUserOrderDetailService;
 @RequestMapping("/wbUserOrderDetail")
 public class WbUserOrderDetailController extends BaseController {
 
-    private String PREFIX = "/order/wbUserOrderDetail/";
+	private String PREFIX = "/order/wbUserOrderDetail/";
 
-    @Autowired
-    private IWbUserOrderDetailService wbUserOrderDetailService;
+	@Autowired
+	private IWbUserOrderDetailService wbUserOrderDetailService;
 
-    /**
-     * 跳转到订单管理首页
-     */
-    @RequestMapping("")
-    public String index() {
-        return PREFIX + "wbUserOrderDetail.html";
-    }
+	/**
+	 * 跳转到订单管理首页
+	 */
+	@RequestMapping("")
+	public String index() {
+		return PREFIX + "wbUserOrderDetail.html";
+	}
 
-    /**
-     * 跳转到添加订单管理
-     */
-    @RequestMapping("/wbUserOrderDetail_add")
-    public String wbUserOrderDetailAdd() {
-        return PREFIX + "wbUserOrderDetail_add.html";
-    }
+	/**
+	 * 跳转到添加订单管理
+	 */
+	@RequestMapping("/wbUserOrderDetail_add")
+	public String wbUserOrderDetailAdd() {
+		return PREFIX + "wbUserOrderDetail_add.html";
+	}
 
-    /**
-     * 跳转到修改订单管理
-     */
-    @RequestMapping("/wbUserOrderDetail_update/{wbUserOrderDetailId}")
-    public String wbUserOrderDetailUpdate(@PathVariable Integer wbUserOrderDetailId, Model model) {
-        WbUserOrderDetail wbUserOrderDetail = wbUserOrderDetailService.selectById(wbUserOrderDetailId);
-        model.addAttribute("item",wbUserOrderDetail);
-        LogObjectHolder.me().set(wbUserOrderDetail);
-        return PREFIX + "wbUserOrderDetail_edit.html";
-    }
+	/**
+	 * 跳转到修改订单管理
+	 */
+	@RequestMapping("/wbUserOrderDetail_update/{wbUserOrderDetailId}")
+	public String wbUserOrderDetailUpdate(@PathVariable Integer wbUserOrderDetailId, Model model) {
+		WbUserOrderDetail wbUserOrderDetail = wbUserOrderDetailService.selectUpdateOrderInfo(wbUserOrderDetailId);
+		System.err.println("wbUserOrderDetail = " + wbUserOrderDetail);
+		model.addAttribute("item", wbUserOrderDetail);
+		LogObjectHolder.me().set(wbUserOrderDetail);
+		return PREFIX + "wbUserOrderDetail_edit.html";
+	}
 
-    /**
-     * 获取订单管理列表
-     */
-    @RequestMapping(value = "/list")
-    @ResponseBody
-    public Object list(String condition) {
-    	List<Map<String, WbUserOrderDetail>>  list = wbUserOrderDetailService.selectOrderDetailLits();
-    	System.err.println(list);
-        return list;
-    }
+	/**
+	 * 获取订单管理列表
+	 */
+	@RequestMapping(value = "/list")
+	@ResponseBody
+	public Object list(String condition) {
+		List<WbUserOrderDetail> list = wbUserOrderDetailService.selectOrderDetailLits();
+		System.err.println(list);
+		return list;
+	}
 
-    /**
-     * 新增订单管理
-     */
-    @RequestMapping(value = "/add")
-    @ResponseBody
-    public Object add(WbUserOrderDetail wbUserOrderDetail) {
-        wbUserOrderDetailService.insert(wbUserOrderDetail);
-        return super.SUCCESS_TIP;
-    }
+	/**
+	 * 新增订单管理
+	 */
+	@RequestMapping(value = "/add")
+	@ResponseBody
+	public Object add(WbUserOrderDetail wbUserOrderDetail) {
+		wbUserOrderDetailService.insert(wbUserOrderDetail);
+		return super.SUCCESS_TIP;
+	}
 
-    /**
-     * 删除订单管理
-     */
-    @RequestMapping(value = "/delete")
-    @ResponseBody
-    public Object delete(@RequestParam Integer wbUserOrderDetailId) {
-        wbUserOrderDetailService.deleteById(wbUserOrderDetailId);
-        return SUCCESS_TIP;
-    }
+	/**
+	 * 删除订单管理
+	 */
+	@RequestMapping(value = "/delete")
+	@ResponseBody
+	public Object delete(@RequestParam Integer wbUserOrderDetailId) {
+		wbUserOrderDetailService.deleteById(wbUserOrderDetailId);
+		return SUCCESS_TIP;
+	}
 
-    /**
-     * 修改订单管理
-     */
-    @RequestMapping(value = "/update")
-    @ResponseBody
-    public Object update(WbUserOrderDetail wbUserOrderDetail) {
-        wbUserOrderDetailService.updateById(wbUserOrderDetail);
-        return super.SUCCESS_TIP;
-    }
+	/**
+	 * 修改订单管理
+	 */
+	@RequestMapping(value = "/update")
+	@ResponseBody
+	public Object update(WbUserOrderDetail wbUserOrderDetail) {
+		System.err.println("修改信息：wbUserOrderDetail = " + wbUserOrderDetail);
+		wbUserOrderDetailService.updateOrderById(wbUserOrderDetail);
+		return super.SUCCESS_TIP;
+	}
 
-    /**
-     * 订单管理详情
-     */
-    @RequestMapping(value = "/detail/{wbUserOrderDetailId}")
-    @ResponseBody
-    public Object detail(@PathVariable("wbUserOrderDetailId") Integer wbUserOrderDetailId) {
-        return wbUserOrderDetailService.selectById(wbUserOrderDetailId);
-    }
+	/**
+	 * 订单管理详情
+	 */
+	@RequestMapping(value = "/detail/{wbUserOrderDetailId}")
+	@ResponseBody
+	public Object detail(@PathVariable("wbUserOrderDetailId") Integer wbUserOrderDetailId) {
+		return wbUserOrderDetailService.selectById(wbUserOrderDetailId);
+	}
 }

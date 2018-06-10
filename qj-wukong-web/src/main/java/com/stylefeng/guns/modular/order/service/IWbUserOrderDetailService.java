@@ -24,5 +24,21 @@ public interface IWbUserOrderDetailService extends IService<WbUserOrderDetail> {
 	 * @author gaoxuefeng
 	 * @return	返回订单列表信息
 	 */
-	List<Map<String, WbUserOrderDetail>> selectOrderDetailLits();
+	List<WbUserOrderDetail> selectOrderDetailLits();
+
+	/**
+	 * @author gaoxuefeng
+	 * 根具订单ID获取即将修改的订单信息
+	 * @param wbUserOrderDetailId 订单ID
+	 * @return 即将修改的订单信息
+	 */
+	WbUserOrderDetail selectUpdateOrderInfo(Integer wbUserOrderDetailId);
+	
+	/**
+	 * @author gaoxuefeng
+	 * 根具订单ID修改订单信息
+	 * @param wbUserOrderDetail 订单信息
+	 * @return 受影响的条数
+	 */
+	boolean updateOrderById(WbUserOrderDetail wbUserOrderDetail);
 }

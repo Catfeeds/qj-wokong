@@ -29,6 +29,7 @@
 			<id property="id" column="id" />
 			<result property="address" column="address" />
 			<result property="phoneNo" column="phone_no" />
+			<result property="userName" column="user_name" />
 		</collection>
 		
 		<collection property="wkProductInfo" column="id"
@@ -52,21 +53,49 @@
 
 	<select id="selectOrderDetailLits" resultMap="BaseResultMap">
 		select
-		od.order_no orderNo,
-		pd.product_name productName,
-		ad.address address,
-		ad.phone_no phoneNo,
-		od.order_money orderMoney,
-		di.colour colour,
-		di.dimens dimens,
-		od.order_num orderNum,
-		od.order_status orderStatus,
-		od.created_date createdDate
-		from wb_user_order_detail od left JOIN wk_product pd on od.product_id =
+		od.id,
+		od.order_no,
+		pd.product_name,
+		ad.address,
+		ad.phone_no,
+		ad.user_name,
+		od.order_money,
+		di.colour,
+		di.dimens,
+		od.order_num,
+		od.order_status,
+		od.created_date
+		from wk_user_order od left JOIN wk_product pd on od.product_id =
 		pd.product_id
-		left JOIN wb_user_address_detail ad on od.address_id = ad.id
+		left JOIN wk_user_address ad on od.address_id = ad.id
 		left JOIN wk_product_info di on di.product_id = od.product_id
-		ORDER BY (od.order_status = '1'),od.created_date DESC
+		ORDER BY (od.order_status = '2'),od.created_date DESC
 	</select>
+	
+	<select id="selectUpdateOrderInfo" resultMap="BaseResultMap">
+		select
+		od.id,
+		od.order_no,
+		pd.product_name,
+		ad.address,
+		ad.phone_no,
+		ad.user_name,
+		od.order_money,
+		di.colour,
+		di.dimens,
+		od.order_num,
+		od.order_status,
+		od.created_date
+		from wk_user_order od left JOIN wk_product pd on od.product_id =
+		pd.product_id
+		left JOIN wk_user_address ad on od.address_id = ad.id
+		left JOIN wk_product_info di on di.product_id = od.product_id
+		WHERE od.id = #{id}
+		ORDER BY (od.order_status = '2'),od.created_date DESC
+	</select>
+	
+	<update id="updateOrderById" parameterType="com.stylefeng.guns.common.persistence.model.WbUserOrderDetail">
+		update wk_user_order set order_status = #{orderStatus},last_updated_date = now() where id = #{id} 
+	</update>
 
 </mapper>

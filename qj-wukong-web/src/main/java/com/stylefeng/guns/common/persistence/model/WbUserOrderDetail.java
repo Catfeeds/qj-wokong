@@ -3,13 +3,16 @@ package com.stylefeng.guns.common.persistence.model;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.enums.IdType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
-import java.io.Serializable;
 
 /**
  * <p>
@@ -19,8 +22,11 @@ import java.io.Serializable;
  * @author gaoxuefeng
  * @since 2018-06-06
  */
-@TableName("wb_user_order_detail")
+@JsonIgnoreProperties
+@TableName("wk_user_order")
 public class WbUserOrderDetail extends Model<WbUserOrderDetail> {
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
 
     private static final long serialVersionUID = 1L;
 
@@ -68,7 +74,7 @@ public class WbUserOrderDetail extends Model<WbUserOrderDetail> {
      * 创建时间
      */
 	@TableField("created_date")
-	private Date createdDate;
+	private String createdDate;
     /**
      * 修改时间
      */
@@ -146,11 +152,17 @@ public class WbUserOrderDetail extends Model<WbUserOrderDetail> {
 		this.isEnable = isEnable;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
+		/*try {
+			System.err.println("createDate = " + createdDate);
+			this.createdDate = sdf.parse(createdDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}*/
 		this.createdDate = createdDate;
 	}
 

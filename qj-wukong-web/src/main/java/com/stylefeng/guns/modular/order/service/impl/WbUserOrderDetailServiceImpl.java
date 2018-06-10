@@ -26,8 +26,18 @@ public class WbUserOrderDetailServiceImpl extends ServiceImpl<WbUserOrderDetailM
 	private WbUserOrderDetailMapper wbUserOrderDetailMapper;
 	
 	@Override
-	public List<Map<String, WbUserOrderDetail>> selectOrderDetailLits() {
+	public List<WbUserOrderDetail> selectOrderDetailLits() {
 		return wbUserOrderDetailMapper.selectOrderDetailLits();
 	}
-	
+
+	@Override
+	public WbUserOrderDetail selectUpdateOrderInfo(Integer wbUserOrderDetailId) {
+		return wbUserOrderDetailMapper.selectUpdateOrderInfo(wbUserOrderDetailId);
+	}
+
+	@Override
+	public boolean updateOrderById(WbUserOrderDetail wbUserOrderDetail) {
+		Integer result = wbUserOrderDetailMapper.updateOrderById(wbUserOrderDetail);
+		return null != result && result >= 1;
+	}
 }

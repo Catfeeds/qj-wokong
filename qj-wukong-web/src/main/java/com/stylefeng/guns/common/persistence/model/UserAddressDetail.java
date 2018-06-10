@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
-@TableName("wb_user_address_detail")
+@TableName("wk_user_address")
 public class UserAddressDetail extends Model<WbUserOrderDetail>{
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +26,9 @@ public class UserAddressDetail extends Model<WbUserOrderDetail>{
 	
 	@TableField("phone_no")
 	private String phoneNo;
-
+	
+	@TableField("user_name")
+	private String userName;
 	
 	
 	public Integer getId() {
@@ -52,6 +54,14 @@ public class UserAddressDetail extends Model<WbUserOrderDetail>{
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -59,7 +69,8 @@ public class UserAddressDetail extends Model<WbUserOrderDetail>{
 
 	@Override
 	public String toString() {
-		return "UserAddressDetail [id=" + id + ", address=" + address + ", phoneNo=" + phoneNo + "]";
+		return "UserAddressDetail [id=" + id + ", address=" + address + ", phoneNo=" + phoneNo + ", userName="
+				+ userName + "]";
 	}
 	
 	
