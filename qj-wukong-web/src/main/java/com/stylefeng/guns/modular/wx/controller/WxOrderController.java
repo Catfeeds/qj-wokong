@@ -24,7 +24,7 @@ import springfox.documentation.spring.web.json.Json;
 @Controller
 @RequestMapping("/wx/order")
 public class WxOrderController extends BaseController {
-
+ 
 	@Autowired
 	private IUserOrderService userOrderService;
 
