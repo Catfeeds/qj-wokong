@@ -11,14 +11,14 @@
 		<result property="username" column="user_name"/>
 		<result property="phoneNo" column="phone_no" />
 		<result property="createdDate" column="created_date"/>
-		<result property="lastUpdateDate" column="last_updated_date"/>
+		<result property="lastUpdateDate" column="last_update_date"/>
 		<result property="consignee" column="consignee"/>
 		<result property="code" column="code"/>
 		<result property="isDefault" column="is_default"/>
 		
 	</resultMap>
 	<sql id="columns">
-		id,we_chat_id,province_id,city_id,area_id,address,user_name,consignee,phone_no,code,is_default,DATE_FORMAT(created_date,'%Y-%m-%d %h:%i:%s') created_date,DATE_FORMAT(last_updated_date,'%Y-%m-%d %h:%i:%s') last_updated_date
+		id,we_chat_id,province_id,city_id,area_id,address,user_name,consignee,phone_no,code,is_default,DATE_FORMAT(created_date,'%Y-%m-%d %h:%i:%s') created_date,DATE_FORMAT(last_update_date,'%Y-%m-%d %h:%i:%s') last_update_date
 	</sql>
 	<select id="getAddressList" resultMap="addressMap">
 		select <include refid="columns"/> from wk_user_address where we_chat_id = #{wechatId}
@@ -28,7 +28,7 @@
 		insert into wk_user_address(
 			we_chat_id,
 			created_date,
-			last_updated_date
+			last_update_date
 			<if test="address.provinceId != null and address.provinceId != ''">
 				,province_id
 			</if>	
@@ -93,7 +93,7 @@
 	</insert>
 	<update id="updateAddressById" parameterType="com.stylefeng.guns.modular.wx.model.ReceivingAddress">
 		update wk_user_address set
-		last_updated_date = CURRENT_TIMESTAMP
+		last_update_date = CURRENT_TIMESTAMP
 		<if test="address.provinceId != null and address.provinceId != ''">
 			,province_id = #{address.provinceId}
 		</if>	
@@ -126,7 +126,7 @@
 	
 	<update id="updateIsDefaultByWechatId">
 		update wk_user_address set
-		last_updated_date = CURRENT_TIMESTAMP,
+		last_update_date = CURRENT_TIMESTAMP,
 		is_default = #{isDefault}
 		where we_chat_id = #{wechatId}
 	</update>
