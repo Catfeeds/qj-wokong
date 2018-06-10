@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.stylefeng.guns.modular.wx.model.ReceivingAddress;
 
 /**
- * 收貨地址dao
+ * 收貨地址dao 
  */
 public interface ReceivingAddressDao {
 	/**
